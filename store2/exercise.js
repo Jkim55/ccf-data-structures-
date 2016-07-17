@@ -3,7 +3,8 @@ var store2 = require('./store2-data.js');
 /////////// ACCESSING DATA ///////////
 
 // Set the sale dates for 'Banana Bunches' from store2 to a variable.
-
+var saleDates = store2['sale dates']['Banana Bunches']
+console.log(saleDates)
 
 // What built-in array property would you use to determine how many sale dates there for store2's 'Banana Bunches'?
 
@@ -26,4 +27,3 @@ var store2 = require('./store2-data.js');
 /////////// CHALLENGE ///////////
 
 // Create an object containing the amounts that store2 made by selling each type of candy.
-
