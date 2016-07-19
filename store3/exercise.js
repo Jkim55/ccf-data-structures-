@@ -1,14 +1,19 @@
 // Hint: Don't forget to require in your data! Refer to store1 or store2 exercise.js files on how to do this.
+var store3 = require('./store3-data.js');
 
 //()()()()() ACCESSING DATA ()()()()()\\
 
 // Set a variable equal to Berry Bites data for store3 on January 7.
-
+var berryBitesData = store3[1]['inventory sold']['Berry Bites']
+console.log(berryBitesData)
 
 // Console log how many Mint Wafers were sold on January 9th?
-
+var mintWafersSold = store3[3]['inventory sold']['Mint Wafers']['quantity']
+console.log(mintWafersSold);
 
 // Set a variable equal to how many dates are included in the dataset.
+var datesInData= store3.length
+console.log(datesInData)
 
 //()()()()() LOOPING OVER DATA ()()()()()\\
 
@@ -24,4 +29,3 @@
 //()()()()() CHALLENGE ()()()()()\\
 
 // Determine how much money store3 made on January 9th.
-
