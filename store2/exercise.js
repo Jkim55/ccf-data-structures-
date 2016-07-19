@@ -55,30 +55,71 @@ var store2 = require('./store2-data.js');
 
 
 // Iterate over store2's sale dates data to find which day had the most total number of sales. How did you calculate this?
-var largest_sale_date = {'largestValue': 0, 'largestDate': 0}
-var dateSalePair = {'2015-01-07': 1, '2015-01-08': 2, '2015-01-09': 2, '2015-01-10': 3};
-var dateSaleKeys = Object.keys(dateSalePair);
-// dateSaleKeys ouput === [ '2015-01-07', '2015-01-08', '2015-01-09', '2015-01-10' ]
+// set up dateSalePairs for all candies
+//
 
-for(var i=0; i<dateSaleKeys.length-1;i++){
-  var dateAti = dateSaleKeys[i]
-  var dateAtiPlus= dateSaleKeys[i+1]
-  if(dateSalePair[dateAti]> dateSalePair[dateAtiPlus]){
-    largest_sale_date['largestValue']= dateSalePair[dateAti]
-    largest_sale_date['largestDate']= dateAti
-    // largest_sale_date[largestDate]= dateSalePair[dateAti]
+var store2SalesData = store2['sale dates']
+// console.log(store2SalesData)
+var store2Candies = Object.keys(store2SalesData)
+// console.log(store2Candies  )
+var allSaleDates = []
+for (var i=0;i<store2Candies.length;i++){
+  // eval(require("locus"))
+  var datesAti= store2SalesData[store2Candies[i]]
+  allSaleDates = allSaleDates.concat(datesAti)  // for every object w/in store2SalesData, push date arry into allSaleDates
+}
+// console.log(allSaleDates)
+var dateSalePair = {}
+for(var date in allSaleDates){
+  var datekey = allSaleDates[date]
+  if(!dateSalePair[datekey]){
+    dateSalePair[datekey]= 1;
   } else {
-    largest_sale_date['largestValue']= dateSalePair[dateAtiPlus]
-    largest_sale_date['largestDate']= dateAtiPlus
-
+    dateSalePair[datekey] += 1;   // is it breaking here??
   }
 }
-console.log(largest_sale_date)
-// If date_of_largest_sale is empty, assign dateSalePair to date_of_largest_sale
-// else if the value of dateSalePair is larger than value of date_of_largest_sale, assign the value to date_of_largest_sale
-// else do nothing
-// return the date (key) of the sale date. key of date_of_largest_sale
+// console.log(dateSalePair);
+
+var consolidatedDates = Object.keys(dateSalePair)
+var largestSaleData = {'largestSaleDate': 0, 'largestSaleQuanity': 0}
+
+for (var i=0;i<consolidatedDates.length; i++){
+  var dateAti = consolidatedDates[i]
+  var dateAtiPlus = consolidatedDates[i+1]
+  if(dateSalePair[dateAti]>dateSalePair[dateAtiPlus]){
+    largestSaleData['largestSaleDate'] = dateAti
+    largestSaleData['largestSaleQuanity'] = dateSalePair[dateAti]
+  } else {
+    largestSaleData['largestSaleDate'] = dateAtiPlus
+    largestSaleData['largestSaleQuanity'] = dateSalePair[dateAtiPlus]
+  }
+}
+
+console.log(largestSaleData);
+
+
+
+
+
+
+// var largest_sale_date = {'largestDate': 0, 'largestValue': 0}
+// var dateSalePair = {'2015-01-07': 1, '2015-01-08': 2, '2015-01-09': 2, '2015-01-10': 3};
+// var dateSaleKeys = Object.keys(dateSalePair);
+// // dateSaleKeys ouput === [ '2015-01-07', '2015-01-08', '2015-01-09', '2015-01-10' ]
+
+// for(var i=0; i<dateSaleKeys.length-1;i++){
+//   var dateAti = dateSaleKeys[i]
+//   var dateAtiPlus= dateSaleKeys[i+1]
+//   if(dateSalePair[dateAti]> dateSalePair[dateAtiPlus]){
+//     largest_sale_date['largestDate']= dateAti
+//     largest_sale_date['largestValue']= dateSalePair[dateAti]
+//   } else {
+//     largest_sale_date['largestDate']= dateAtiPlus
+//     largest_sale_date['largestValue']= dateSalePair[dateAtiPlus]
+//
+//   }
+// }
+// console.log(largest_sale_date)
 
 /////////// CHALLENGE ///////////
-
 // Create an object containing the amounts that store2 made by selling each type of candy.
