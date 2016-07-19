@@ -18,10 +18,18 @@ console.log(datesInData)
 //()()()()() LOOPING OVER DATA ()()()()()\\
 
 // Create a loop to iterate over the sale data from store3. Use this loop to create an array of dates contained in the sale data.
+var dateArray = []
+for (var i=0;i<store3.length;i++){
+  dateArray.push(store3[i]['date'])
+}
+console.log(dateArray);
 
+// Use `Object.keys()` to loop over the inventory sold for January 10th in store3.
+// While iterating over the data, create an object containing each candy's name and price.
 
-// Use `Object.keys()` to loop over the inventory sold for January 10th in store3. While iterating over the data, create an object containing each candy's name and price.
+var jan10Data = 
 
+console.log(jan10Sales);
 
 // Create a loop to iterate over the whole store3 variable to find out how many Peanut Butter Buttered Peanuts were sold on all dates.
 

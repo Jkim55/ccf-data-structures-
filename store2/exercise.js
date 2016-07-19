@@ -55,16 +55,22 @@ var store2 = require('./store2-data.js');
 
 
 // Iterate over store2's sale dates data to find which day had the most total number of sales. How did you calculate this?
-var largest_sale_date = {}
+var largest_sale_date = {'largestValue': 0, 'largestDate': 0}
 var dateSalePair = {'2015-01-07': 1, '2015-01-08': 2, '2015-01-09': 2, '2015-01-10': 3};
 var dateSaleKeys = Object.keys(dateSalePair);
+// dateSaleKeys ouput === [ '2015-01-07', '2015-01-08', '2015-01-09', '2015-01-10' ]
 
-for(var i=0; i<dateSaleKeys.length;i++){
-  if(dateSalePair[dateSaleKeys[i]]> dateSalePair[dateSaleKeys[i+1]]){
-    eval(require("locus"))
-    largest_sale_date=dateSalePair[dateSaleKeys]
+for(var i=0; i<dateSaleKeys.length-1;i++){
+  var dateAti = dateSaleKeys[i]
+  var dateAtiPlus= dateSaleKeys[i+1]
+  if(dateSalePair[dateAti]> dateSalePair[dateAtiPlus]){
+    largest_sale_date['largestValue']= dateSalePair[dateAti]
+    largest_sale_date['largestDate']= dateAti
+    // largest_sale_date[largestDate]= dateSalePair[dateAti]
   } else {
-    largest_sale_date={dateSalePair[dateSaleKeys[i+1]]}
+    largest_sale_date['largestValue']= dateSalePair[dateAtiPlus]
+    largest_sale_date['largestDate']= dateAtiPlus
+
   }
 }
 console.log(largest_sale_date)
