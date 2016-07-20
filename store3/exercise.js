@@ -26,23 +26,30 @@ var store3 = require('./store3-data.js');
 
 // Use `Object.keys()` to loop over the inventory sold for January 10th in store3.
 // While iterating over the data, create an object containing each candy's name and price.
-var jan10SalesPairs = {}    // should this be an array or object?
-var jan10Sales = store3[4]["inventory sold"]
+
+var jan10SalesNamePricePairs={}
+// should this be an array or object?
+var jan10Sales= store3[4]["inventory sold"]  // object of names with nest object of cost & price
 // console.log("this is the obj",jan10Sales);
-
-var jan10SalesKeys = Object.keys(jan10Sales)
+var jan10SalesKeys=Object.keys(jan10Sales)   // array of candy names
 // console.log(`Use this for keys: ${jan10SalesKeys}`);
-
 for(var i=0; i<jan10SalesKeys.length; i++){
-  var key= jan10SalesKeys[i];
-  var value= jan10Sales[key]['quantity'];
-  jan10SalesPairs[key]=value
-  console.log(key)
+  var candyName=jan10SalesKeys[i];  // name of each candy
+  var candyPrice=jan10Sales[candyName]['cost'];
+  jan10SalesNamePricePairs[candyName]= candyPrice
 }
 
-console.log(jan10SalesPairs)
+console.log(jan10SalesNamePricePairs)
+
 // Create a loop to iterate over the whole store3 variable to find out how many
 // Peanut Butter Buttered Peanuts were sold on all dates.
+
+// Loop over each position in store3 array - each position is an object - store3[i]
+// Access the object 'inventory sold' - returns an object w a nested array. store3[i]['inventory sold']
+// Iternate over each object within 'invetory sold' and find the objects with (key === 'Peanut Butter Buttered Peanuts' aka PBBP)
+// Once found, access the 'quantity' key & return the value of quantity key... add to counter 'total PBBP'
+
+
 
 
 
