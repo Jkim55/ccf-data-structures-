@@ -83,12 +83,14 @@ for(var date in allSaleDates){
 var consolidatedDates = Object.keys(dateSalePair)
 var largestSaleData = {'largestSaleDate': 0, 'largestSaleQuanity': 0}
 
-for (var i=0;i<consolidatedDates.length; i++){
+
+for (var i=0;i<consolidatedDates.length-1; i++){
   var dateAti = consolidatedDates[i]
   var dateAtiPlus = consolidatedDates[i+1]
   if(dateSalePair[dateAti]>dateSalePair[dateAtiPlus]){
     largestSaleData['largestSaleDate'] = dateAti
     largestSaleData['largestSaleQuanity'] = dateSalePair[dateAti]
+    // eval(require("locus"))
   } else {
     largestSaleData['largestSaleDate'] = dateAtiPlus
     largestSaleData['largestSaleQuanity'] = dateSalePair[dateAtiPlus]
